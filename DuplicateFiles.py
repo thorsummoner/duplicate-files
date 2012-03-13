@@ -33,7 +33,7 @@ if __name__ == '__main__':
     PARSER = ArgumentParser( description='Finds duplicate files.' )
     PARSER.add_argument( '-gui', action='store_true', 
 			 help='Display graphical user interface.' )
-    PARSER.add_argument( '-root', metavar='R', help='Dir to search.' )
+    PARSER.add_argument( '-root', metavar='<path>', default = '', help='Dir to search.' )
     PARSER.add_argument( '-remove', action='store_true', 
                          help='Delete duplicate files.' )
     ARGS = PARSER.parse_args()
@@ -44,12 +44,15 @@ if __name__ == '__main__':
 	app.master.title("DuplicatesDeletion")
 	app.mainloop()
     else:
-        DUPS = find_duplicates( ARGS.root )
-	print '%d Duplicate files found.' % len(DUPS)
-        for f in sorted(DUPS):
-            if ARGS.remove == True:
-                remove( f )
-                print '\tDeleted '+ f
+	if ARGS.root == '':
+	    PARSER.print_help()
+	else:
+            DUPS = find_duplicates( ARGS.root )
+	    print '%d Duplicate files found.' % len(DUPS)
+            for f in sorted(DUPS):
+                if ARGS.remove == True:
+                    remove( f )
+                    print '\tDeleted '+ f
             else:
                 print '\t'+ f
 
