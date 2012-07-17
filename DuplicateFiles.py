@@ -28,19 +28,31 @@ def find_duplicates( rootdir ):
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
+    from DuplicatesDeletion import duplicates_gui
     
     PARSER = ArgumentParser( description='Finds duplicate files.' )
-    PARSER.add_argument( 'root', metavar='R', help='Dir to search.' )
+    PARSER.add_argument( '-gui', action='store_true', 
+			 help='Display graphical user interface.' )
+    PARSER.add_argument( '-root', metavar='<path>', default = '', help='Dir to search.' )
     PARSER.add_argument( '-remove', action='store_true', 
                          help='Delete duplicate files.' )
     ARGS = PARSER.parse_args()
 
-    DUPS = find_duplicates( ARGS.root )
+    if ARGS.gui == True:
+        app  =  duplicates_gui()
+	app.setroot(ARGS.root)
+	app.master.title("DuplicatesDeletion")
+	app.mainloop()
+    else:
+	if ARGS.root == '':
+	    PARSER.print_help()
+	else:
+            DUPS = find_duplicates( ARGS.root )
+	    print '%d Duplicate files found.' % len(DUPS)
+            for f in sorted(DUPS):
+                if ARGS.remove == True:
+                    remove( f )
+                    print '\tDeleted '+ f
+            else:
+                print '\t'+ f
 
-    print '%d Duplicate files found.' % len(DUPS)
-    for f in sorted(DUPS):
-        if ARGS.remove == True:
-            remove( f )
-            print '\tDeleted '+ f
-        else:
-            print '\t'+ f
