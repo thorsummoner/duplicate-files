@@ -53,6 +53,6 @@ if __name__ == '__main__':
                 if ARGS.remove == True:
                     remove( f )
                     print '\tDeleted '+ f
-            else:
-                print '\t'+ f
+                else:
+                    print '\t'+ f
 
