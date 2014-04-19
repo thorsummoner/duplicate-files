@@ -1,10 +1,11 @@
 
+import os
 from os import remove
 from os import path
 import time
 import queue
 from tkinter import *
-import tkinter.filedialog as askdirectory
+from tkinter.filedialog import askdirectory
 from lib.finddupe import Scanner
 from lib.finddupe import Updater
 
@@ -91,7 +92,7 @@ class  DupeGui(Frame):
 			return
 		self._result_total_var.set('Scanning directories...please wait.')
 		self.setStartState()
-		_queue = Queue.Queue()
+		_queue = queue.Queue()
 		self._time_duration = time.time()
 
 		scanner = Scanner(_path, _queue, self._finished_scan)
@@ -124,8 +125,9 @@ class  DupeGui(Frame):
 			self._duplicate_index = 0
 		if self._duplicate_index > len(self._duplicates)-1:
 			self._duplicate_index = len(self._duplicates)-1
-		for item in self._duplicates[self._duplicate_index]:
-			self.scan_output.insert(END,item)
+		if self._duplicate_index != -1:
+			for item in self._duplicates[self._duplicate_index]:
+				self.scan_output.insert(END,item)
 		self._result_total_var.set("The directory contains {0} file(s) which seem to exist twice or more!".format(len(self._duplicates)))
 		self._result_current_label.set("Showing: {0} of {1}".format(self._duplicate_index+1,len(self._duplicates)))
 

@@ -34,7 +34,7 @@ class Scanner(threading.Thread):
 			#run over all files in dir with the same size if there is more then one
 			duplicates = {}
 			for filepath in files:
-				with open( filepath ) as openfile:
+				with open( filepath, 'rb' ) as openfile:
 					filehash = md5( openfile.read() ).hexdigest()
 				if filehash not in duplicates:
 					duplicates.setdefault(filehash, []).append (filepath)
@@ -43,6 +43,15 @@ class Scanner(threading.Thread):
 			for duplicate in [ duplicate for duplicate in  duplicates.values() if len(duplicate)>1 ]:
 				self._queue.put(duplicate)
 		self._finished_scan[0] = 1
+
+	def md5_for_file(f, block_size=2**20):
+		md5 = hashlib.md5()
+		while True:
+			data = f.read(block_size)
+			if not data:
+				break
+			md5.update(data)
+		return md5.digest()
 
 class Updater(threading.Thread):
 
@@ -59,7 +68,7 @@ class Updater(threading.Thread):
 		while True:
 			try:
 				item = self._queue.get(True,0.03)         #  seems to be a good time value
-			except Queue.Empty:
+			except queue.Empty:
 				#if queue is empty and scan is finished then stop this thread
 				if self._finished_scan[0] == 1:
 					self._time_duration = time.time() - self._time_duration

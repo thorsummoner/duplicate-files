@@ -23,7 +23,7 @@ def find_duplicates( rootdir ):
 	# We are only interested in lists with more than one entry.
 	for files in [ flist for flist in filesizes.values() if len(flist)>1 ]:
 		for filepath in files:
-			with open( filepath ) as openfile:
+			with open( filepath, 'rb' ) as openfile:
 				filehash = md5( openfile.read() ).hexdigest()
 			if filehash not in unique:
 				unique.add( filehash )
