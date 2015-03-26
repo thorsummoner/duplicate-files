@@ -48,7 +48,7 @@ def main():
 
     if argp.gui:
         app = duplicates_gui()
-        app.setroot(argp.root)
+        app.set_root(argp.root)
         app.master.title("DuplicatesDeletion")
         app.mainloop()
     else:
