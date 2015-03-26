@@ -1,0 +1,579 @@
+/*
+Theme Name: Min
+Theme URI: http://www.curtziegler.com/
+Description: A clean, minimal, flexible wordpress theme.
+Version: 1.0
+Author: Curt Ziegler
+Author URI: http://www.curtziegler.com/
+Tags: clean, minimal, white
+*/
+
+
+html, body, form,
+h1, h2, h3, h4, h5, h6,
+p, img, a
+{
+	margin:0;
+	padding:0;
+	outline:0;
+	border:0;
+}
+
+body
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.8em;
+	color:#222;
+	line-height:140%;
+}	
+
+h1, h2, h3, h4, h5, h6, 
+.promo p
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+h1, h2, h3, h4, h5, h6, p
+{
+	padding:0 0 15px 0;
+}
+h1 { font-size:2.4em;  }
+h2 { font-size:2.2em; font-weight:normal; }
+h3 { font-size:1.9em; font-weight:normal }
+h4 { font-size:1.7em; }
+h5 { font-size:1.5em; }
+h6 { font-size:1.2em;}
+
+
+a, .post h2 a:hover
+{
+	color:#c1760b;
+	text-decoration:none;
+}
+a:hover
+{
+	text-decoration:underline;
+}
+
+
+.sidebar .widget
+{
+	border-left:1px solid #ededed;
+	background:url(images/triangle_gray_right.gif) no-repeat left center;
+	padding:0 0 0 20px; 
+	margin:0 0 30px 0;
+}
+.widget h3
+{
+	font-size:1.4em;
+	font-weight:normal;
+	color:#777;
+}
+.widget p
+{
+	font-size:90%;
+}
+.widget UL, .widget UL LI
+{
+	margin:0;
+	padding:0;
+	list-style-type:square;
+	color:#777;
+}
+.widget UL
+{
+	padding:0 0 0 20px;
+}
+.widget UL LI
+{
+	padding:0 0 4px 0;
+}
+.widget UL LI UL
+{
+	padding-top:6px;
+}
+#logo
+{
+	color:#777;
+}
+
+
+
+.alternate, .hidden
+{
+	display:none;
+}
+
+.contentwidth
+{
+	width:940px;
+	margin:0 auto;
+}
+
+.left, .alignleft
+{
+	float:left;
+}
+.right, .alignright
+{
+	float:right;
+}
+
+
+#header
+{
+	background:url(images/border_bottom.gif) repeat-x bottom center;
+	padding:2px 0;
+}
+#header p
+{
+	padding:0 0 3px 0;
+}
+#logo a
+{
+	margin-right:10px;
+	display:block;
+	float:left;
+}
+#logo p
+{
+	font-weight:bold;
+	font-size:90%;
+	line-height:48px;
+}
+
+
+
+
+#menu UL, #menu LI
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#menu LI
+{
+	display:block;
+	float:left;
+}
+#menu a
+{
+	color:#777;
+	font-weight:bold;
+	line-height:48px;
+	padding:0 0 0 20px;
+}
+#menu a:hover, #menu UL LI.current_page_item a
+{
+	color:#222;
+	text-decoration:none;
+}
+
+
+#main
+{
+	background:url(images/triangle_gray.gif) no-repeat top center;
+	border-top:1px solid #ededed;
+	padding:30px 0;
+}
+#footer-top
+{
+	background:url(images/border_top.gif) repeat-x top;
+}
+#footer-top .contentwidth
+{
+	background:url(images/triangle_white.gif) no-repeat top center;
+	padding:30px 0;
+}
+#footer-bottom
+{
+	padding:10px 0 50px 0;
+	border-top:1px solid #fff;
+}
+body, #footer-bottom
+{
+	background:#d9d9d9;
+}
+
+#header, #footer-top
+{
+	background-color:#ededed;
+}
+#top
+{
+	background:#fff url(images/bg.png) no-repeat top left;
+}
+
+#promos
+{
+	margin:30px auto;
+	background:transparent;
+}
+.promo p
+{
+	font-size:3em;
+	line-height:1.3em;
+}
+
+.column
+{
+	margin:0 20px 0 0;
+	float:left;
+}
+.columnLarge
+{
+	width:700px;
+}
+.columnMed
+{
+	width:460px;
+}
+.columnSmall
+{
+	width:220px;
+}
+.last
+{
+	margin:0px 0px 0px 0px;
+}
+
+
+
+.post
+{
+	float: left;
+	width: 700px;
+	padding:3px 0 30px 0;
+}
+.post p.subtitle
+{
+	padding:0px;
+	font-size:75%;
+	color:#777;
+	font-weight:bold;
+	
+}
+.post h2 a
+{
+	color:#222;
+	text-decoration:none;
+}
+.post .postmeta span
+{
+	background:#ededed;
+	border-right:2px solid #fff;
+	display:block;
+	float:left;
+	padding:1px 6px;
+	font-size:75%;
+}
+.post .postmeta p
+{
+	padding:0 0 10px 0;
+}
+.post .postmeta p a
+{
+}
+.post .postmeta p a:hover
+{
+}
+.post .postcontent
+{
+}
+.post a.more-link
+{
+	font-weight:bold;
+	border-left:1px solid #ededed;
+	border-bottom:1px solid #ededed;
+	padding:4px;
+}
+
+.navigation
+{
+}
+.navigation .alignleft a
+{
+	background:url(images/icon_arrow_left.gif) no-repeat left center;
+	padding:5px 5px 5px 20px;
+}
+.navigation .alignright a
+{
+	background:url(images/icon_arrow_right.gif) no-repeat right center;
+	padding:5px 20px 5px 5px;
+}
+.navigation .alignright a,
+.navigation .alignleft a
+{
+	font-weight:bold;
+}
+
+.list-pages a
+{
+	padding:3px 5px;
+	background:#eee;
+}
+
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   text-align:center;
+}
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+
+
+
+#comments, #respond
+{
+	padding:30px 0 10px 0;
+}
+#commentform #url,
+#commentform #email,
+#commentform #author,
+#commentform #comment,
+#commentform #submit
+{
+	border:0;
+	background:#fff;
+	border:2px solid #e0e0e0;
+	width:200px;
+	padding:5px;
+}
+#commentform #submit
+{
+	width:130px;
+	font-weight:bold;
+}
+
+#commentform #comment
+{
+	width:500px;
+	height:120px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+
+OL.commentlist,
+OL.commentlist LI
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+OL.commentlist .vcard
+{
+	border-top:1px dotted #ccc;
+	margin:10px 0;
+	padding:10px 0;
+}
+OL.commentlist .avatar
+{
+	float:left;
+	border:1px solid #ccc;
+	padding:1px;
+}
+
+OL.commentlist .commentmetadata
+{
+	float:right;
+	font-size:70%;
+}
+OL.commentlist .fn
+{
+	font-weight:bold;
+	float:left;
+	padding:10px;
+}
+OL.commentlist .says
+{
+	display:none;
+}
+OL.commentlist p
+{
+	display:block;
+	clear:both;
+	font-size:90%;
+}
+OL.commentlist a.comment-reply-link
+{
+	font-weight:bold;
+	font-size:90%;
+}
+
+
+
+/* Searchform */
+#searchform .screen-reader-text
+{
+	display:none;
+}
+
+#searchform #s
+{
+	border:0;
+	border-bottom:1px solid #ccc;
+	background:#fefefe;
+	padding:5px 0;
+	float:left;
+	width:170px;
+}
+
+#searchform #searchsubmit
+{
+	margin:0 0 4px 0;
+	float:left;
+}
+
+
+
+
+.standardForm input, .standardForm .textarea
+{
+	border:0;
+	background:#fff;
+	border:2px solid #e0e0e0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1em;
+	outline:0;
+}
+.standardForm .textarea,
+.standardForm .textbox
+{
+	width:220px;
+	padding:3px;
+	color:#777;
+}
+.standardForm .textarea
+{
+	height:90px;
+}
+.standardForm .textbox
+{
+	margin:0 0 5px 0;
+	height:20px;
+}
+.standardForm .submit
+{
+	padding:4px;
+	height:30px;
+	color:#777;
+}
+#message
+{
+	color:#990000;
+	font-weight:bold;
+}	
+
+
+
+#calendar_wrap table
+{
+	width:100%;
+}
+#calendar_wrap td
+{
+	border-left:1px solid #eee;
+	border-bottom:1px solid #eee;
+	text-align:center;
+	padding:2px;
+}
+#calendar_wrap #today
+{
+	background:#eee;
+}
+#calendar_wrap .pad,
+#calendar_wrap #prev,
+#calendar_wrap #next
+{
+	border:0;
+}
+#calendar_wrap caption
+{
+	font-weight:bold;
+}
+
+
+/* clearfix start */ 
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+/* clearfix end */ 
+
+.socialcontent {
+width: 700px;
+float: left;
+padding-top: 5px;
+}
+
+.socialbutton {
+float: left;
+margin-right: 5px;
+}
+
+.si-facebook {
+width: 32px;
+height: 32px;
+background-color: #3b5998;
+}
+
+.si-github {
+width: 32px;
+height: 32px;
+background-color: #4183c4;
+}
+
+.si-instagram {
+width: 32px;
+height: 32px;
+background-color: #3f729b;
+}
+
+.si-linkedin {
+width: 32px;
+height: 32px;
+background-color: #007fb1;
+}
+
+.si-twitter {
+width: 32px;
+height: 32px;
+background-color: #00aced;
+}
