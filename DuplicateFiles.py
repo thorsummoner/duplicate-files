@@ -53,14 +53,14 @@ def main():
         if argp.root == '':
             ARGP.print_help()
         else:
-            DUPS = find_duplicates(argp.root)
-            print '%d Duplicate files found.' % len(DUPS)
-            for f in sorted(DUPS):
+            duplicates = find_duplicates(argp.root)
+            print '%d Duplicate files found.' % len(duplicates)
+            for file_path in sorted(duplicates):
                 if argp.remove:
-                    remove(f)
-                    print '\tDeleted ' + f
+                    remove(file_path)
+                    print '\tDeleted ' + file_path
                 else:
-                    print '\t' + f
+                    print '\t' + file_path
 
 if __name__ == '__main__':
     main()
