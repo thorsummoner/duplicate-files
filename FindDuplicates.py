@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 """Find duplicate files inside a directory tree."""
 
 from os import walk, remove, stat

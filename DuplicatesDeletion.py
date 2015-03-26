@@ -1,3 +1,7 @@
+#!/usr/bin/env python2
+
+"""Gui for usability."""
+
 from FindDuplicates import Scanner, Updater
 from Tkinter import *
 from tkFileDialog import askdirectory
