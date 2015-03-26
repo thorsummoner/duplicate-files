@@ -7,6 +7,17 @@ from argparse import ArgumentParser
 from DuplicatesDeletion import duplicates_gui
 
 
+ARGP = ArgumentParser(description='Finds duplicate files.')
+ARGP.add_argument('-gui', action='store_true',
+                    help='Display graphical user interface.')
+ARGP.add_argument(
+    '-root',
+    metavar='<path>',
+    default='',
+    help='Dir to search.')
+ARGP.add_argument('-remove', action='store_true',
+                    help='Delete duplicate files.')
+
 def find_duplicates(rootdir):
     """Find duplicate files in directory tree."""
     filesizes = {}
@@ -31,31 +42,21 @@ def find_duplicates(rootdir):
 
 def main():
     """Main CLI tool."""
-    PARSER = ArgumentParser(description='Finds duplicate files.')
-    PARSER.add_argument('-gui', action='store_true',
-                        help='Display graphical user interface.')
-    PARSER.add_argument(
-        '-root',
-        metavar='<path>',
-        default='',
-        help='Dir to search.')
-    PARSER.add_argument('-remove', action='store_true',
-                        help='Delete duplicate files.')
-    ARGS = PARSER.parse_args()
+    argp = ARGP.parse_args()
 
-    if ARGS.gui:
+    if argp.gui:
         app = duplicates_gui()
-        app.setroot(ARGS.root)
+        app.setroot(argp.root)
         app.master.title("DuplicatesDeletion")
         app.mainloop()
     else:
-        if ARGS.root == '':
-            PARSER.print_help()
+        if argp.root == '':
+            ARGP.print_help()
         else:
-            DUPS = find_duplicates(ARGS.root)
+            DUPS = find_duplicates(argp.root)
             print '%d Duplicate files found.' % len(DUPS)
             for f in sorted(DUPS):
-                if ARGS.remove:
+                if argp.remove:
                     remove(f)
                     print '\tDeleted ' + f
                 else:
