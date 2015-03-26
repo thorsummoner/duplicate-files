@@ -2,16 +2,16 @@
 
 """Find duplicate files inside a directory tree."""
 
-from os import walk, remove, stat
+from os import walk, stat
 from os.path import join as joinpath
 from md5 import md5
 import threading
 import Queue
 import time
-import sys
 
 
 class Scanner(threading.Thread):
+    """Scanner."""
 
     def __init__(self, path, queue, finished_scan):
         threading.Thread.__init__(self)
@@ -20,10 +20,12 @@ class Scanner(threading.Thread):
         self._finished_scan = finished_scan
 
     def run(self):
-        """Find duplicate files in directory tree and return array with lists of duplicateted files."""
+        """Find duplicate files in directory tree and return array with
+            lists of duplicateted files.
+        """
         filesizes = {}
         # Build up dict with key as filesize and value is list of filenames.
-        for path, dirs, files in walk(self._path):
+        for path, _, files in walk(self._path):
             for filename in files:
                 filepath = joinpath(path, filename)
                 filesize = stat(filepath).st_size
@@ -44,20 +46,32 @@ class Scanner(threading.Thread):
                 else:
                     duplicates[filehash].append(filepath)
             for duplicate in [
-                    duplicate for duplicate in duplicates.values() if len(duplicate) > 1]:
+                duplicate
+                for duplicate
+                in duplicates.values()
+                if len(duplicate) > 1
+            ]:
                 self._queue.put(duplicate)
         self._finished_scan[0] = 1
 
 
 class Updater(threading.Thread):
+    """Updater."""
 
-    def __init__(self, queue, duplicates, updateFunction, finished_scan, time):
+    def __init__(
+        self,
+        queue,
+        duplicates,
+        updateFunction,
+        finished_scan,
+        time_duration
+    ):
         threading.Thread.__init__(self)
         self._queue = queue
-        self._updateFunc = updateFunction
+        self._update_func = updateFunction
         self._duplicates = duplicates
         self._finished_scan = finished_scan
-        self._time_duration = time
+        self._time_duration = time_duration
 
     def run(self):
 
@@ -70,12 +84,14 @@ class Updater(threading.Thread):
                 # if queue is empty and scan is finished then stop this thread
                 if self._finished_scan[0] == 1:
                     self._time_duration = time.time() - self._time_duration
-                    print 'Finished in ' + repr(self._time_duration) + ' seconds!'
-                    self._updateFunc()
+                    print 'Finished in ' + repr(
+                        self._time_duration
+                    ) + ' seconds!'
+                    self._update_func()
                     break
                 else:
                     continue
 
             self._duplicates.append(item)
             self._queue.task_done()
-            self._updateFunc()
+            self._update_func()
