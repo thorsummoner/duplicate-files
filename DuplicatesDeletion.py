@@ -20,26 +20,8 @@ class DuplicatesApp(Frame):
         Frame.__init__(self, master)
         self.grid(sticky=N + S + E + W)
         self._duplicates = []
-        self.create_widgets()
-        self.set_start_state()
-        self._root = ''
-        self._time_duration = time
 
-    def set_root(self, dirname):
-        """set_root."""
-        self.path.set(dirname)
-
-    def set_start_state(self):
-        """set_start_state."""
-        del self._duplicates[:]
-        self._duplicate_index = 0
-        # needs to be a list instead of Boolean, cause it is used as a
-        # reference in the threads
-        self._finished_scan = [0]
-        self.update_output()
-
-    def create_widgets(self):
-        """create_widgets."""
+        ### create_widgets.
         # Stretching
         top = self.winfo_toplevel()
         top.rowconfigure(0, weight=1)
@@ -136,6 +118,22 @@ class DuplicatesApp(Frame):
             padx=5,
             pady=5,
             sticky=E + W)
+        self.set_start_state()
+        self._root = ''
+        self._time_duration = time
+
+    def set_root(self, dirname):
+        """set_root."""
+        self.path.set(dirname)
+
+    def set_start_state(self):
+        """set_start_state."""
+        del self._duplicates[:]
+        self._duplicate_index = 0
+        # needs to be a list instead of Boolean, cause it is used as a
+        # reference in the threads
+        self._finished_scan = [0]
+        self.update_output()
 
     def start_scan(self):
         """start_scan."""
@@ -227,6 +225,6 @@ class DuplicatesApp(Frame):
 duplicates_gui = DuplicatesApp
 
 if __name__ == '__main__':
-    app = deletion_gui()
-    app.master.title("DuplicatesDeletion")
-    app.mainloop()
+    APP = DuplicatesApp() # o_O ???
+    APP.master.title("DuplicatesDeletion")
+    APP.mainloop()
