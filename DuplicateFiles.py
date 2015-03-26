@@ -3,13 +3,15 @@
 from os import walk, remove, stat
 from os.path import join as joinpath
 from md5 import md5
+from argparse import ArgumentParser
+from DuplicatesDeletion import duplicates_gui
 
 
 def find_duplicates(rootdir):
     """Find duplicate files in directory tree."""
     filesizes = {}
     # Build up dict with key as filesize and value is list of filenames.
-    for path, dirs, files in walk(rootdir):
+    for path, _, files in walk(rootdir):
         for filename in files:
             filepath = joinpath(path, filename)
             filesize = stat(filepath).st_size
@@ -27,10 +29,8 @@ def find_duplicates(rootdir):
                 duplicates.append(filepath)
     return duplicates
 
-if __name__ == '__main__':
-    from argparse import ArgumentParser
-    from DuplicatesDeletion import duplicates_gui
-
+def main():
+    """Main CLI tool."""
     PARSER = ArgumentParser(description='Finds duplicate files.')
     PARSER.add_argument('-gui', action='store_true',
                         help='Display graphical user interface.')
@@ -60,3 +60,6 @@ if __name__ == '__main__':
                     print '\tDeleted ' + f
                 else:
                     print '\t' + f
+
+if __name__ == '__main__':
+    main()
